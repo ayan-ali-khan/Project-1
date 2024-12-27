@@ -4,7 +4,7 @@ import turtle as tur
 
 tur.title("Pythontpoint")
 
-tur.write("Specially for you Zoonie .....!!!!        ",align="right",)
+tur.write("Specially for you Zoonie. Get Well Soon.....!!!!        ",align="right",)
 
 # Set initial position
 
