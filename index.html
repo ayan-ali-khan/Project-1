@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Well Soon, Zoonie</title>
+    <style>
+        /* General Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 18px;
+            }
+
+            canvas {
+                width: 90%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Specially for you, Zoonie. Get Well Soon!</h1>
+    <canvas id="flowerCanvas" width="600" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById("flowerCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Function to draw a filled circle
+        function drawCircle(x, y, radius, color) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Function to draw a petal
+        function drawPetal(cx, cy, width, height, rotation, color) {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(rotation);
+            ctx.beginPath();
+            ctx.ellipse(0, 0, width, height, 0, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.restore();
+        }
+
+        // Draw flower base
+        drawCircle(300, 300, 10, "red");
+
+        // Draw petals
+        drawPetal(300, 300, 25, 60, Math.PI / 6, "red");
+        drawPetal(300, 300, 25, 60, Math.PI / 3, "red");
+        drawPetal(300, 300, 25, 60, Math.PI / 2, "red");
+        drawPetal(300, 300, 25, 60, (2 * Math.PI) / 3, "red");
+
+        // Draw leaves
+        drawPetal(250, 350, 30, 80, -Math.PI / 4, "green");
+        drawPetal(350, 350, 30, 80, Math.PI / 4, "green");
+
+        // Draw heart
+        ctx.beginPath();
+        ctx.moveTo(300, 400);
+        ctx.bezierCurveTo(250, 300, 200, 400, 300, 500);
+        ctx.bezierCurveTo(400, 400, 350, 300, 300, 400);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+    </script>
+</body>
+</html>
